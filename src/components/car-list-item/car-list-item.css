@@ -1,0 +1,47 @@
+.car-list-item {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #000000;
+  padding: 20px;
+  margin: 0 0 10px 10px;
+  background-color: #ffffff;
+  transition: transform 0.3s;
+}
+
+.car-list-item:hover {
+  transform: scale(1.03);
+}
+
+.car-list-item__title {
+  font-weight: 600;
+  font-size: 18px;
+}
+.car-list-item__price {
+}
+.car-list-item__image img {
+  width: 350px;
+  height: 150px;
+}
+
+.car-list-item__buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.car-list-item__buttons button {
+  border: none;
+  font-size: 16px;
+  background-color: #000000;
+  border: 1px solid #000000;
+  color: #ffffff;
+  padding: 5px 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.car-list-item__buttons button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
