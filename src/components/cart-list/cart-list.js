@@ -16,9 +16,6 @@ class CartList extends React.Component {
                 <div className="cart-item__title">
                   {item.brand} {item.model}
                 </div>
-                <div className="cart-item__image">
-                  <img src={item.imageUrl} alt="car" />
-                </div>
                 <div className="cart-item__price">{item.startPrice} грн.</div>
                 <div className="cart-item__nav">
                   <button>-</button>

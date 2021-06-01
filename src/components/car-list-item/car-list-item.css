@@ -18,10 +18,6 @@
 }
 .car-list-item__price {
 }
-.car-list-item__image img {
-  width: 350px;
-  height: 150px;
-}
 
 .car-list-item__buttons {
   display: flex;

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import logo from "../../assets/images/audiLogo.svg";
 import "./header.css";
 
 class Header extends React.Component {
@@ -9,10 +10,7 @@ class Header extends React.Component {
     return (
       <header className="header-wrapper">
         <Link to="/">
-          <img
-            src="https://cdn-ua.audi.at/assets/build/images/audiLogo.svg"
-            alt="logo"
-          />
+          <img src={logo} alt="logo" />
         </Link>
 
         <Link to="/cart">

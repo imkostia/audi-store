@@ -41,7 +41,6 @@ const reducer = (state = initialState, action) => {
         model: car.model,
         startPrice: car.startPrice,
         currency: car.currency,
-        imageUrl: car.imageUrl,
         value: car.value + 1 || 1,
       };
       return {
