@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { addNewCar } from "../../actions";
+import { addNewCar } from "../../store/thunks/cars";
 import { WithCarService } from "../hoc";
 
 import { generateId } from "../../utils";

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
-import { editCar } from "../../actions";
+import { editCar } from "../../store/thunks/cars";
 import { WithCarService } from "../hoc";
 
 const EditCarPage = ({ carService }) => {
@@ -11,7 +11,10 @@ const EditCarPage = ({ carService }) => {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const car = useSelector(({ cars }) => cars.find((car) => car.id === id));
+
+  const car = useSelector(({ carsStore }) =>
+    carsStore.cars.find((car) => car.id === id)
+  );
 
   const onHandleInputChange = (e) => {
     const { name, value } = e.target;

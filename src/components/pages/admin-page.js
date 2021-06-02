@@ -4,14 +4,14 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { WithCarService } from "../hoc";
-import { fetchCars, deleteCar } from "../../actions";
+import { fetchCars, deleteCar } from "../../store/thunks/cars";
 
 import Spinner from "../spinner";
 
 const AdminPage = ({ carService }) => {
   const dispatch = useDispatch();
 
-  const { cars, loading } = useSelector((store) => store);
+  const { cars, loading } = useSelector(({ carsStore }) => carsStore);
 
   useEffect(() => {
     dispatch(fetchCars(carService)());

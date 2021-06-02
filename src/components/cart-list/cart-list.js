@@ -30,10 +30,9 @@ class CartList extends React.Component {
   }
 }
 
-const mapStateToProps = ({ selectedCars, orderTotal }) => {
+const mapStateToProps = ({ cartStore }) => {
   return {
-    items: selectedCars,
-    total: orderTotal,
+    items: cartStore.cart,
   };
 };
 

@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import { WithCarService } from "../hoc";
 import Spinner from "../spinner";
 import ErrorIndicator from "../error-indicator";
-import { fetchCars, addCarToCart } from "../../actions";
+import { fetchCars } from "../../store/thunks/cars";
+import { addCarToCart } from "../../store/actions/cart";
 import { compose } from "../../utils";
 import "./car-list.css";
 
@@ -27,25 +28,26 @@ class CarList extends React.Component {
 
     return (
       <div className="car-list">
-        {cars.map((car) => {
-          return (
-            <CarListItem
-              key={car.id}
-              car={car}
-              onAddToCart={() => onAddToCart(car.id)}
-            />
-          );
-        })}
+        {cars &&
+          cars.map((car) => {
+            return (
+              <CarListItem
+                key={car.id}
+                car={car}
+                onAddToCart={() => onAddToCart(car.id)}
+              />
+            );
+          })}
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ cars, loading, error }) => {
+const mapStateToProps = ({ carsStore }) => {
   return {
-    cars,
-    loading,
-    error,
+    cars: carsStore.cars,
+    loading: carsStore.loading,
+    error: carsStore.error,
   };
 };
 
