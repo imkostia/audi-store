@@ -1,6 +1,10 @@
 import { carsRequested, carsLoaded, carsFetchError } from "../actions/cars";
+import { history } from "../../";
+import CarService from "../../services/car-service";
 
-export const fetchCars = (carService) => () => (dispatch) => {
+const carService = new CarService();
+
+export const fetchCars = () => (dispatch) => {
   dispatch(carsRequested());
 
   carService
@@ -9,7 +13,7 @@ export const fetchCars = (carService) => () => (dispatch) => {
     .catch((error) => dispatch(carsFetchError(error)));
 };
 
-export const deleteCar = (carService) => (id) => (dispatch) => {
+export const deleteCar = (id) => (dispatch) => {
   dispatch(carsRequested());
 
   carService
@@ -18,20 +22,16 @@ export const deleteCar = (carService) => (id) => (dispatch) => {
     .catch((error) => dispatch(carsFetchError(error)));
 };
 
-export const editCar = (carService) => (car) => (dispatch) => {
-  dispatch(carsRequested());
-
+export const editCar = (car) => (dispatch) => {
   carService
     .editCar(car)
-    .then((resp) => dispatch(carsLoaded(resp)))
+    .then((_) => history.push("/admin"))
     .catch((error) => dispatch(carsFetchError(error)));
 };
 
-export const addNewCar = (carService) => (car) => (dispatch) => {
-  dispatch(carsRequested());
-
+export const addNewCar = (car) => (dispatch) => {
   carService
     .addNewCar(car)
-    .then((resp) => dispatch(carsLoaded(resp)))
+    .then((_) => history.push("/admin"))
     .catch((error) => dispatch(carsFetchError(error)));
 };

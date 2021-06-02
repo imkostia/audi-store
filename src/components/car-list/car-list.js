@@ -2,7 +2,6 @@ import React from "react";
 import CarListItem from "../car-list-item";
 import { connect } from "react-redux";
 
-import { WithCarService } from "../hoc";
 import Spinner from "../spinner";
 import ErrorIndicator from "../error-indicator";
 import { fetchCars } from "../../store/thunks/cars";
@@ -52,14 +51,10 @@ const mapStateToProps = ({ carsStore }) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const { carService } = ownProps;
   return {
-    fetchCars: () => dispatch(fetchCars(carService)()),
+    fetchCars: () => dispatch(fetchCars()),
     onAddToCart: (id) => dispatch(addCarToCart(id)),
   };
 };
 
-export default compose(
-  WithCarService(),
-  connect(mapStateToProps, mapDispatchToProps)
-)(CarList);
+export default compose(connect(mapStateToProps, mapDispatchToProps))(CarList);

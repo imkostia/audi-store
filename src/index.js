@@ -1,26 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Router } from "react-router";
+import createBrowserHistory from "history/createBrowserHistory";
 
 import App from "./components/app";
 import ErrorBoundary from "./components/error-boundary";
-import CarService from "./services/car-service";
-import { CarServiceProvider } from "./components/car-service-context";
 
 import store from "./store";
 
-const carService = new CarService();
+export const history = createBrowserHistory();
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ErrorBoundary>
-        <CarServiceProvider value={carService}>
-          <Router>
-            <App />
-          </Router>
-        </CarServiceProvider>
+        <Router history={history}>
+          <App />
+        </Router>
       </ErrorBoundary>
     </Provider>
   </React.StrictMode>,

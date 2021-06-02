@@ -3,11 +3,10 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { addNewCar } from "../../store/thunks/cars";
-import { WithCarService } from "../hoc";
 
 import { generateId } from "../../utils";
 
-const NewCarPage = ({ carService }) => {
+const NewCarPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -22,7 +21,7 @@ const NewCarPage = ({ carService }) => {
   const onSubmitForm = (e) => {
     e.preventDefault();
 
-    dispatch(addNewCar(carService)({ id, ...values }));
+    dispatch(addNewCar({ id, ...values }));
     history.push("/admin");
   };
 
@@ -147,4 +146,4 @@ const NewCarPage = ({ carService }) => {
   );
 };
 
-export default WithCarService()(NewCarPage);
+export default NewCarPage;

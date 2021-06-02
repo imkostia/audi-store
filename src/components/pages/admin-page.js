@@ -3,22 +3,21 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { WithCarService } from "../hoc";
 import { fetchCars, deleteCar } from "../../store/thunks/cars";
 
 import Spinner from "../spinner";
 
-const AdminPage = ({ carService }) => {
+const AdminPage = () => {
   const dispatch = useDispatch();
 
   const { cars, loading } = useSelector(({ carsStore }) => carsStore);
 
   useEffect(() => {
-    dispatch(fetchCars(carService)());
-  }, [carService, dispatch]);
+    dispatch(fetchCars());
+  }, [dispatch]);
 
   const onRemoveItem = (id) => {
-    dispatch(deleteCar(carService)(id));
+    dispatch(deleteCar(id));
   };
 
   if (loading) {
@@ -71,4 +70,4 @@ const AdminPage = ({ carService }) => {
   );
 };
 
-export default WithCarService()(AdminPage);
+export default AdminPage;
