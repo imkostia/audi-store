@@ -4,8 +4,8 @@ export default class CarService {
       id: 1,
       brand: "Audi",
       model: "RS6",
-      startPrice: "3262466",
-      currency: "грн",
+      price: "144000",
+      currency: "$",
       power: "600",
       acceleration: "3.6",
       maxSpeed: "305",
@@ -16,8 +16,8 @@ export default class CarService {
       id: 2,
       brand: "Audi",
       model: "S7",
-      startPrice: "2490110",
-      currency: "грн",
+      price: "83000",
+      currency: "$",
       power: "344",
       acceleration: "5.1",
       maxSpeed: "280",
@@ -28,8 +28,8 @@ export default class CarService {
       id: 3,
       brand: "Audi",
       model: "RS e-tron GT",
-      startPrice: "4632056",
-      currency: "грн",
+      price: "164000",
+      currency: "$",
       power: "600",
       acceleration: "3.3",
       maxSpeed: "240",
@@ -40,6 +40,30 @@ export default class CarService {
 
   getCars() {
     return new Promise((resolve) => {
+      setTimeout(() => resolve(this.data), 800);
+    });
+  }
+
+  addNewCar(newCar) {
+    return new Promise((resolve) => {
+      this.data.push(newCar);
+
+      setTimeout(() => resolve(this.data), 800);
+    });
+  }
+
+  deleteCar(carId) {
+    return new Promise((resolve) => {
+      this.data = this.data.filter((car) => car.id !== carId);
+
+      setTimeout(() => resolve(this.data), 800);
+    });
+  }
+
+  editCar(editedCar) {
+    return new Promise((resolve) => {
+      const index = this.data.findIndex((car) => car.id === editedCar.id);
+      this.data[index] = editedCar;
       setTimeout(() => resolve(this.data), 800);
     });
   }

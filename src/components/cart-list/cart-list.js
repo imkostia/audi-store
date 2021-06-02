@@ -5,7 +5,7 @@ import "./cart-list.css";
 
 class CartList extends React.Component {
   render() {
-    const { items, total } = this.props;
+    const { items } = this.props;
 
     return (
       <div className="cart-container">
@@ -16,7 +16,7 @@ class CartList extends React.Component {
                 <div className="cart-item__title">
                   {item.brand} {item.model}
                 </div>
-                <div className="cart-item__price">{item.startPrice} грн.</div>
+                <div className="cart-item__price">{item.price} грн.</div>
                 <div className="cart-item__nav">
                   <button>-</button>
                   <button>+</button>

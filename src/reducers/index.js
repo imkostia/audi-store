@@ -3,13 +3,13 @@ const initialState = {
   loading: true,
   error: null,
   selectedCars: [],
-  orderTotal: "2000000",
 };
 
 const reducer = (state = initialState, action) => {
   console.log(action.type);
   switch (action.type) {
     case "FETCH_CARS_REQUEST":
+      console.log("STATE BEFORE => ", state);
       return {
         ...state,
         cars: [],
@@ -32,6 +32,25 @@ const reducer = (state = initialState, action) => {
         error: action.payload,
       };
 
+    // case "DELETE_CAR": {
+    //   const newCars = state.cars.filter((car) => car.id !== action.payload);
+    //   return {
+    //     ...state,
+    //     cars: newCars,
+    //   };
+    // }
+
+    // case "EDIT_CAR": {
+    //   const index = state.cars.findIndex((car) => car.id === action.payload.id);
+    //   const newCars = [...state.cars];
+    //   newCars[index] = action.payload;
+
+    //   return {
+    //     ...state,
+    //     cars: newCars,
+    //   };
+    // }
+
     case "ADD_CAR_TO_CART_REQUEST":
       const carId = action.payload;
       const car = state.cars.find((car) => car.id === carId);
@@ -39,7 +58,7 @@ const reducer = (state = initialState, action) => {
         id: car.id,
         brand: car.brand,
         model: car.model,
-        startPrice: car.startPrice,
+        price: car.price,
         currency: car.currency,
         value: car.value + 1 || 1,
       };

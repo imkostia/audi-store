@@ -3,7 +3,7 @@ import "./car-list-item.css";
 
 class CarListItem extends React.Component {
   render() {
-    const { brand, model, startPrice } = this.props.car;
+    const { brand, model, price, currency } = this.props.car;
 
     const { onAddToCart } = this.props;
     return (
@@ -12,7 +12,9 @@ class CarListItem extends React.Component {
           {brand} {model}
         </div>
         <div className="car-list-item__price">
-          <span>Від {startPrice} грн.</span>
+          <span>
+            Від {price} {currency}
+          </span>
         </div>
         <div className="car-list-item__buttons">
           <button>Дізнатись більше</button>

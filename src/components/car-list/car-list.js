@@ -5,12 +5,7 @@ import { connect } from "react-redux";
 import { WithCarService } from "../hoc";
 import Spinner from "../spinner";
 import ErrorIndicator from "../error-indicator";
-import {
-  carsLoaded,
-  carsRequested,
-  carsFetchError,
-  addCarToCart,
-} from "../../actions";
+import { fetchCars, addCarToCart } from "../../actions";
 import { compose } from "../../utils";
 import "./car-list.css";
 
@@ -57,14 +52,7 @@ const mapStateToProps = ({ cars, loading, error }) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   const { carService } = ownProps;
   return {
-    fetchCars: () => {
-      dispatch(carsRequested());
-
-      carService
-        .getCars()
-        .then((resp) => dispatch(carsLoaded(resp)))
-        .catch((error) => dispatch(carsFetchError(error)));
-    },
+    fetchCars: () => dispatch(fetchCars(carService)()),
     onAddToCart: (id) => dispatch(addCarToCart(id)),
   };
 };

@@ -23,6 +23,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-top: 10px;
 }
 
 .car-list-item__buttons button {
@@ -35,6 +36,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
+  margin-right: 10px;
 }
 
 .car-list-item__buttons button:hover {
