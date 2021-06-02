@@ -1,0 +1,26 @@
+.car-fields-form {
+  width: 500px;
+}
+
+.car-fields-form__items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.car-fields-form__item {
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.car-fields-form__label {
+  font-weight: 600;
+  display: flex;
+}
+
+.car-fields-form__input {
+}
+textarea.car-fields-form__input {
+  resize: none;
+  width: 177px;
+  height: 50px;
+}

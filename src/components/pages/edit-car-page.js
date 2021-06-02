@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 
 import { editCar } from "../../store/thunks/cars";
+import CarFieldsForm from "../car-fields-form";
 
 const EditCarPage = () => {
   let { id } = useParams();
@@ -37,97 +38,12 @@ const EditCarPage = () => {
   return (
     <div className="edit-car-page-container">
       <h2>Editing car with id {id}</h2>
-      <form onSubmit={onSubmitForm}>
-        <div>
-          <label>
-            Brand:
-            <input
-              type="text"
-              name="brand"
-              onChange={onHandleInputChange}
-              placeholder="Input brand"
-              value={values.brand}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Model:
-            <input
-              type="text"
-              name="model"
-              onChange={onHandleInputChange}
-              placeholder="Input model"
-              value={values.model}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Price:
-            <input
-              type="text"
-              name="price"
-              onChange={onHandleInputChange}
-              placeholder="Input price"
-              value={values.price}
-            />
-          </label>
-        </div>
-  
-        <div>
-          <label>
-            Power:
-            <input
-              type="text"
-              name="power"
-              onChange={onHandleInputChange}
-              placeholder="Input power"
-              value={values.power}
-            />
-          </label>
-        </div>
-
-        <div>
-          <label>
-            Acceleration:
-            <input
-              type="text"
-              name="acceleration"
-              onChange={onHandleInputChange}
-              placeholder="Input acceleration"
-              value={values.acceleration}
-            />
-          </label>
-        </div>
-
-        <div>
-          <label>
-            Max speed:
-            <input
-              type="text"
-              name="maxSpeed"
-              onChange={onHandleInputChange}
-              placeholder="Input maxSpeed"
-              value={values.maxSpeed}
-            />
-          </label>
-        </div>
-
-        <div>
-          <label>
-            Description:
-            <textarea
-              name="description"
-              onChange={onHandleInputChange}
-              placeholder="Input description"
-              value={values.description}
-            ></textarea>
-          </label>
-        </div>
-
-        <button>Edit car</button>
-      </form>
+      <CarFieldsForm
+        onSubmitForm={onSubmitForm}
+        onHandleInputChange={onHandleInputChange}
+        values={values}
+        buttonName="Edit car"
+      />
     </div>
   );
 };

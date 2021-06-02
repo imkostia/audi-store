@@ -7,6 +7,7 @@ import {
   AdminPage,
   NewCarPage,
   EditCarPage,
+  NotFoundPage,
 } from "../pages";
 import Header from "../header";
 import "./app.css";
@@ -23,6 +24,7 @@ class App extends React.Component {
           <Route path="/admin" component={AdminPage} exact />
           <Route path="/admin/new" component={NewCarPage} />
           <Route path="/admin/:id" component={EditCarPage} />
+          <Route path="*" component={NotFoundPage} />
         </Switch>
       </main>
     );

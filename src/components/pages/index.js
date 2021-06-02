@@ -4,5 +4,14 @@ import CartPage from "./cart-page";
 import AdminPage from "./admin-page";
 import NewCarPage from "./new-car-page";
 import EditCarPage from "./edit-car-page";
+import NotFoundPage from "./not-found-page";
 
-export { HomePage, CarPage, CartPage, AdminPage, NewCarPage, EditCarPage };
+export {
+  HomePage,
+  CarPage,
+  CartPage,
+  AdminPage,
+  NewCarPage,
+  EditCarPage,
+  NotFoundPage,
+};

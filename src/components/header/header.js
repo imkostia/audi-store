@@ -6,7 +6,6 @@ import "./header.css";
 
 class Header extends React.Component {
   render() {
-    const { total } = this.props;
     return (
       <header className="header-wrapper">
         <Link to="/">
@@ -14,7 +13,7 @@ class Header extends React.Component {
         </Link>
 
         <Link to="/cart">
-          <span>TOTAL: {total}</span>
+          <span>CART</span>
         </Link>
       </header>
     );
