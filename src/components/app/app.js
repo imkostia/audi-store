@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router";
 import {
   HomePage,
   CarPage,
@@ -18,8 +18,8 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route path="/" component={HomePage} exact />
-          <Route path="/car" component={CarPage} />
           <Route path="/cart" component={CartPage} />
+          <Route path="/cars/:id" component={CarPage} />
           <Route path="/admin" component={AdminPage} exact />
           <Route path="/admin/new" component={NewCarPage} />
           <Route path="/admin/:id" component={EditCarPage} />

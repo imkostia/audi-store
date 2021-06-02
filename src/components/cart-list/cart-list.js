@@ -1,39 +1,38 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import "./cart-list.css";
+import {
+  addCarToCart,
+  removeCarFromCart,
+  removeCarsFromCart,
+} from "../../store/actions/cart";
 
-class CartList extends React.Component {
-  render() {
-    const { items } = this.props;
+const CartList = ({ cart }) => {
+  const dispatch = useDispatch();
 
-    return (
-      <div className="cart-container">
-        {items &&
-          items.map((item) => {
-            return (
-              <div key={item.id} className="cart-item">
-                <div className="cart-item__title">
-                  {item.brand} {item.model}
-                </div>
-                <div className="cart-item__price">{item.price} грн.</div>
-                <div className="cart-item__nav">
-                  <button>-</button>
-                  <button>+</button>
-                  <button>x</button>
-                </div>
+  const onIncrease = (carId) => dispatch(addCarToCart(carId));
+  const onDecrease = (carId) => dispatch(removeCarFromCart(carId));
+  const onDelete = (carId) => dispatch(removeCarsFromCart(carId));
+
+  return (
+    <div className="cart-container">
+      {cart &&
+        cart.map((cartItem) => {
+          return (
+            <div key={cartItem.carId} className="cart-item">
+              <div className="cart-item__id">{cartItem.carId}</div>
+              <div className="cart-item__amount">{cartItem.amount}</div>
+              <div className="cart-item__nav">
+                <button onClick={() => onDecrease(cartItem.carId)}>-</button>
+                <button onClick={() => onIncrease(cartItem.carId)}>+</button>
+                <button onClick={() => onDelete(cartItem.carId)}>x</button>
               </div>
-            );
-          })}
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = ({ cartStore }) => {
-  return {
-    items: cartStore.cart,
-  };
+            </div>
+          );
+        })}
+    </div>
+  );
 };
 
-export default connect(mapStateToProps)(CartList);
+export default CartList;

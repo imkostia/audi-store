@@ -14,7 +14,7 @@ class Header extends React.Component {
         </Link>
 
         <Link to="/cart">
-          <span>Сума: {total}</span>
+          <span>TOTAL: {total}</span>
         </Link>
       </header>
     );

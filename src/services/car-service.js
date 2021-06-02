@@ -1,11 +1,10 @@
 export default class CarService {
   data = [
     {
-      id: 1,
+      id: "dc7efdab-b549-280c-140b-2dc1c9499028",
       brand: "Audi",
       model: "RS6",
       price: "144000",
-      currency: "$",
       power: "600",
       acceleration: "3.6",
       maxSpeed: "305",
@@ -13,11 +12,10 @@ export default class CarService {
         "Ділова зустріч чи сімейна подорож: обирайте Audi RS 6 Avant. Адже цей динамічний спортивний автомобіль пропонує безкомпромісний дизайн разом з високою придатністю для повсякденної експлуатації. Це любов з першої поїздки.",
     },
     {
-      id: 2,
+      id: "6e2d2199-a23d-1ebf-f82a-8f077d0306b6",
       brand: "Audi",
       model: "S7",
       price: "83000",
-      currency: "$",
       power: "344",
       acceleration: "5.1",
       maxSpeed: "280",
@@ -25,11 +23,10 @@ export default class CarService {
         "Елегантний вигляд, динамічна віддача потужності, інтер'єр, оздоблений високоякісними матеріалами - Audi S7 Sportback приваблює зовнішніми та внутрішніми особливостями. Крім того, з нашим спортивним купе ви зможете оцінити новітні технології допомоги водієві та можливості мультимедіа.",
     },
     {
-      id: 3,
+      id: "ec9834d6-7c9e-cd98-eacd-a8895e7708f2",
       brand: "Audi",
       model: "RS e-tron GT",
       price: "164000",
-      currency: "$",
       power: "600",
       acceleration: "3.3",
       maxSpeed: "240",

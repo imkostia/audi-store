@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router";
 
 import { editCar } from "../../store/thunks/cars";
 
 const EditCarPage = () => {
   let { id } = useParams();
-  id = Number(id);
 
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const car = useSelector(({ carsStore }) =>
     carsStore.cars.find((car) => car.id === id)
@@ -24,14 +22,12 @@ const EditCarPage = () => {
     e.preventDefault();
 
     dispatch(editCar({ id, ...values }));
-    history.push("/admin");
   };
 
   const [values, setValues] = useState({
     brand: car?.brand || "",
     model: car?.model || "",
     price: car?.price || "",
-    currency: car?.currency || "",
     power: car?.power || "",
     acceleration: car?.acceleration || "",
     maxSpeed: car?.maxSpeed || "",
@@ -78,19 +74,7 @@ const EditCarPage = () => {
             />
           </label>
         </div>
-        <div>
-          <label>
-            Currency:
-            <input
-              type="text"
-              name="currency"
-              onChange={onHandleInputChange}
-              placeholder="Input currency"
-              value={values.currency}
-            />
-          </label>
-        </div>
-
+  
         <div>
           <label>
             Power:

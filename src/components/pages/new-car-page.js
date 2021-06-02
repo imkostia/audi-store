@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router";
 
 import { addNewCar } from "../../store/thunks/cars";
 
@@ -29,7 +29,6 @@ const NewCarPage = () => {
     brand: "",
     model: "",
     price: "",
-    currency: "",
     power: "",
     acceleration: "",
     maxSpeed: "",
@@ -73,18 +72,6 @@ const NewCarPage = () => {
               onChange={onHandleInputChange}
               placeholder="Input price"
               value={values.price}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Currency:
-            <input
-              type="text"
-              name="currency"
-              onChange={onHandleInputChange}
-              placeholder="Input currency"
-              value={values.currency}
             />
           </label>
         </div>
