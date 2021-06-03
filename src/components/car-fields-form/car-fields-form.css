@@ -5,11 +5,16 @@
 .car-fields-form__items {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .car-fields-form__item {
-  width: 50%;
+  width: 49%;
   margin-bottom: 10px;
+}
+
+.car-fields-form__item.full-width {
+  width: 100%;
 }
 
 .car-fields-form__label {
@@ -18,9 +23,11 @@
 }
 
 .car-fields-form__input {
+  width: 100%;
 }
+
 textarea.car-fields-form__input {
   resize: none;
-  width: 177px;
-  height: 50px;
+  width: 100%;
+  height: 100px;
 }

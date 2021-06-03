@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+button {
+  border: none;
+  font-size: 16px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-right: 10px;
+  background-color: #000000;
+  border: 1px solid #000000;
+  color: #ffffff;
+  border-radius: 20px;
+}
+
+button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+th,
+td {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+input,
+textarea {
+  padding: 9px 20px 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #a0aab8;
+  background: #eff2f7;
+  border: 1px solid #d6e0e7;
+  border-radius: 20px;
+  outline: none;
+}
+
+input:focus {
+  background: #ffffff;
+}

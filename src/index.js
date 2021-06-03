@@ -4,6 +4,8 @@ import { Provider } from "react-redux";
 import { Router } from "react-router";
 import { createBrowserHistory } from "history";
 
+import "./styles/common.css";
+
 import App from "./components/app";
 import ErrorBoundary from "./components/error-boundary";
 

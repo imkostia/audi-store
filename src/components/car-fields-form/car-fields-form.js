@@ -110,12 +110,12 @@ const CarFieldsForm = ({ initialFormFields, action, buttonName, id }) => {
             name="maxSpeed"
             id="maxSpeed"
             onChange={onHandleInputChange}
-            placeholder="Input maxSpeed"
+            placeholder="Input max speed"
             value={fields.maxSpeed}
             className="car-fields-form__input"
           />
         </div>
-        <div className="car-fields-form__item">
+        <div className="car-fields-form__item full-width">
           <label htmlFor="description" className="car-fields-form__label">
             Description*:
           </label>

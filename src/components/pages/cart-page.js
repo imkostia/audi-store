@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 
 import CartList from "../cart-list";
 
-const getTotalValue = (cars) => {
-  return cars.reduce((prev, cur) => {
+const getTotalValue = (cart) => {
+  return cart.reduce((prev, cur) => {
     prev += cur.amount * cur.price;
 
     return prev;

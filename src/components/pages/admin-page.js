@@ -20,9 +20,35 @@ const AdminPage = () => {
     dispatch(deleteCar(id));
   };
 
-  if (loading) {
-    return <Spinner />;
-  }
+  const table = (
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Navigation</th>
+        </tr>
+      </thead>
+      <tbody>
+        {cars.map((car) => {
+          return (
+            <tr key={car.id}>
+              <td>{car.id}</td>
+              <td>{`${car.brand} ${car.model}`}</td>
+              <td>{car.price}</td>
+              <td>
+                <Link to={`/admin/${car.id}`}>
+                  <button>edit</button>
+                </Link>
+                <button onClick={() => onRemoveItem(car.id)}>remove</button>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  );
 
   return (
     <div className="admin">
@@ -33,38 +59,14 @@ const AdminPage = () => {
             <button>New</button>
           </Link>
         </div>
-        <div className="admin__table">
-          <table>
-            <thead>
-              <tr>
-                <th>id</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Navigation</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cars &&
-                cars.map((car) => {
-                  return (
-                    <tr key={car.id}>
-                      <td>{car.id}</td>
-                      <td>{`${car.brand} ${car.model}`}</td>
-                      <td>{car.price}</td>
-                      <td>
-                        <Link to={`/admin/${car.id}`}>
-                          <button>edit</button>
-                        </Link>
-                        <button onClick={() => onRemoveItem(car.id)}>
-                          remove
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
-            </tbody>
-          </table>
-        </div>
+        <div className="admin__table"></div>
+        {loading ? (
+          <Spinner />
+        ) : !loading && cars.length ? (
+          table
+        ) : (
+          <h1>You have no cars yet, please, add new car</h1>
+        )}
       </div>
     </div>
   );

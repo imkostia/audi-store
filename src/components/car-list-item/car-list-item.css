@@ -6,6 +6,7 @@
   margin: 0 0 10px 10px;
   background-color: #ffffff;
   transition: transform 0.3s;
+  border-radius: 20px;
 }
 
 .car-list-item:hover {
@@ -24,22 +25,4 @@
   justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 10px;
-}
-
-.car-list-item__buttons button {
-  border: none;
-  font-size: 16px;
-  background-color: #000000;
-  border: 1px solid #000000;
-  color: #ffffff;
-  padding: 5px 10px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  margin-right: 10px;
-}
-
-.car-list-item__buttons button:hover {
-  background-color: #ffffff;
-  color: #000000;
 }

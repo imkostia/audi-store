@@ -1,0 +1,11 @@
+.error-indicator {
+  width: auto;
+  padding: 20px;
+  font-size: 26px;
+  border: 1px solid red;
+  border-radius: 20px;
+  margin: 0 auto;
+  width: 1;
+  display: block;
+  width: fit-content;
+}
