@@ -1,15 +1,31 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
+import { fetchCarById } from "../../store/thunks/cars";
+import { getCarById } from "../../store/selectors/cars";
 
 import CarDetails from "../car-details";
+import Spinner from "../spinner";
+import ErrorIndicator from "../error-indicator";
 
 const CarPage = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
 
-  const car = useSelector(({ carsStore }) =>
-    carsStore.cars.find((car) => car.id === id)
-  );
+  useEffect(() => {
+    dispatch(fetchCarById(id));
+  }, [id, dispatch]);
+
+  const car = useSelector((store) => getCarById(store, id));
+  const { loading, error } = useSelector(({ carsStore }) => carsStore);
+
+  if (!car && loading) {
+    return <Spinner />;
+  }
+
+  if (!car && !loading && error) {
+    return <ErrorIndicator errorMessage={error} />;
+  }
 
   return (
     <div>

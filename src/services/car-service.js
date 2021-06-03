@@ -41,6 +41,13 @@ export default class CarService {
     });
   }
 
+  getCarById(id) {
+    return new Promise((resolve, reject) => {
+      const car = this.data.find((car) => car.id === id);
+      setTimeout(() => (car ? resolve(car) : reject("Car not found")), 800);
+    });
+  }
+
   addNewCar(newCar) {
     return new Promise((resolve) => {
       this.data.push(newCar);

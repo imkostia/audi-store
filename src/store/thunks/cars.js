@@ -1,7 +1,13 @@
-import { carsRequested, carsLoaded, carsFetchError } from "../actions/cars";
+import {
+  carsRequested,
+  carsLoaded,
+  carsFetchError,
+  setCar,
+} from "../actions/cars";
 import { history } from "../../";
-import CarService from "../../services/car-service";
+import { getCarById } from "../selectors/cars";
 
+import CarService from "../../services/car-service";
 const carService = new CarService();
 
 export const fetchCars = () => (dispatch) => {
@@ -11,6 +17,19 @@ export const fetchCars = () => (dispatch) => {
     .getCars()
     .then((resp) => dispatch(carsLoaded(resp)))
     .catch((error) => dispatch(carsFetchError(error)));
+};
+
+export const fetchCarById = (id) => (dispatch, getState) => {
+  const carFromStore = getCarById(getState(), id);
+
+  if (!carFromStore) {
+    dispatch(carsRequested());
+
+    carService
+      .getCarById(id)
+      .then((car) => dispatch(setCar(car)))
+      .catch((error) => dispatch(carsFetchError(error)));
+  }
 };
 
 export const deleteCar = (id) => (dispatch) => {

@@ -11,6 +11,13 @@ export const carsLoaded = (payload) => {
   };
 };
 
+export const setCar = (car) => {
+  return {
+    type: "SET_CAR",
+    payload: car,
+  };
+};
+
 export const carsFetchError = (error) => {
   return {
     type: "FETCH_CARS_FETCH_FAILURE",

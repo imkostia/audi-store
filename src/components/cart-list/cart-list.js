@@ -35,7 +35,7 @@ const CartList = ({ cart, total }) => {
                   <td>
                     {cartItem.brand} {cartItem.model}
                   </td>
-                  <td>{cartItem.price}</td>
+                  <td>{cartItem.price} $</td>
                   <td>{cartItem.amount}</td>
                   <td>
                     <button onClick={() => onDecrease(cartItem.carId)}>
@@ -51,7 +51,7 @@ const CartList = ({ cart, total }) => {
             })}
         </tbody>
       </table>
-      <p>TOTAL: {total}</p>
+      <p>TOTAL: {total} $</p>
     </div>
   );
 };

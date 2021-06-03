@@ -5,10 +5,8 @@ const initialState = {
 };
 
 const cars = (state = initialState, action) => {
-  console.log(action.type);
   switch (action.type) {
     case "FETCH_CARS_REQUEST":
-      console.log("STATE BEFORE => ", state);
       return {
         ...state,
         cars: [],
@@ -22,6 +20,15 @@ const cars = (state = initialState, action) => {
         loading: false,
         error: null,
       };
+
+    case "SET_CAR": {
+      return {
+        ...state,
+        cars: [...state.cars, action.payload],
+        loading: false,
+        error: null,
+      };
+    }
 
     case "FETCH_CARS_FETCH_FAILURE":
       return {

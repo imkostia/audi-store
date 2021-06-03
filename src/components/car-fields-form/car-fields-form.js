@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import "./car-fields-form.css";
 
-const CarFieldsForm = ({
-  onSubmitForm,
-  onHandleInputChange,
-  values,
-  buttonName,
-}) => {
+const validateFields = (fields) => {
+  return Object.values(fields).every(Boolean);
+};
+
+const CarFieldsForm = ({ initialFormFields, action, buttonName, id }) => {
+  const dispatch = useDispatch();
+  const [error, setError] = useState(false);
+  const [fields, setFields] = useState(initialFormFields);
+
+  const onHandleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFields({ ...fields, [name]: value });
+  };
+
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+
+    if (validateFields(fields)) {
+      setError(false);
+      dispatch(action({ id, ...fields }));
+    } else {
+      setError(true);
+    }
+  };
+
   return (
     <form onSubmit={onSubmitForm} className="car-fields-form">
       <div className="car-fields-form__items">
@@ -21,7 +41,7 @@ const CarFieldsForm = ({
             name="brand"
             onChange={onHandleInputChange}
             placeholder="Input brand"
-            value={values.brand}
+            value={fields.brand}
             className="car-fields-form__input"
           />
         </div>
@@ -35,7 +55,7 @@ const CarFieldsForm = ({
             id="model"
             onChange={onHandleInputChange}
             placeholder="Input model"
-            value={values.model}
+            value={fields.model}
             className="car-fields-form__input"
           />
         </div>
@@ -49,7 +69,7 @@ const CarFieldsForm = ({
             id="price"
             onChange={onHandleInputChange}
             placeholder="Input price"
-            value={values.price}
+            value={fields.price}
             className="car-fields-form__input"
           />
         </div>
@@ -63,7 +83,7 @@ const CarFieldsForm = ({
             id="power"
             onChange={onHandleInputChange}
             placeholder="Input power"
-            value={values.power}
+            value={fields.power}
             className="car-fields-form__input"
           />
         </div>
@@ -77,7 +97,7 @@ const CarFieldsForm = ({
             id="acceleration"
             onChange={onHandleInputChange}
             placeholder="Input acceleration"
-            value={values.acceleration}
+            value={fields.acceleration}
             className="car-fields-form__input"
           />
         </div>
@@ -91,7 +111,7 @@ const CarFieldsForm = ({
             id="maxSpeed"
             onChange={onHandleInputChange}
             placeholder="Input maxSpeed"
-            value={values.maxSpeed}
+            value={fields.maxSpeed}
             className="car-fields-form__input"
           />
         </div>
@@ -104,10 +124,14 @@ const CarFieldsForm = ({
             id="description"
             onChange={onHandleInputChange}
             placeholder="Input description"
-            value={values.description}
+            value={fields.description}
             className="car-fields-form__input"
           ></textarea>
         </div>
+      </div>
+
+      <div>
+        {error && <span style={{ color: "red" }}>Please, fill all fields</span>}
       </div>
 
       <button>{buttonName}</button>
