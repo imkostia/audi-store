@@ -1,10 +1,8 @@
 import React from "react";
 import CarList from "../car-list";
 
-class HomePage extends React.Component {
-  render() {
-    return <CarList />;
-  }
-}
+const HomePage = () => {
+  return <CarList />;
+};
 
 export default HomePage;
