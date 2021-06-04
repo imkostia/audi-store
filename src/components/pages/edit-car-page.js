@@ -45,7 +45,7 @@ const EditCarPage = () => {
       </h2>
       <CarFieldsForm
         initialFormFields={initialFormFields}
-        onSubmitAction={editCar}
+        submitAction={editCar}
         id={car.id}
         buttonName="Edit car"
       />

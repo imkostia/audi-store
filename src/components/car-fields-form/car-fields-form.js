@@ -5,12 +5,7 @@ import PropTypes from "prop-types";
 import "./car-fields-form.css";
 import { validateFields } from "../../utils";
 
-const CarFieldsForm = ({
-  initialFormFields,
-  onSubmitAction,
-  buttonName,
-  id,
-}) => {
+const CarFieldsForm = ({ initialFormFields, submitAction, buttonName, id }) => {
   const dispatch = useDispatch();
   const [error, setError] = useState(false);
   const [fields, setFields] = useState(initialFormFields);
@@ -25,7 +20,7 @@ const CarFieldsForm = ({
 
     if (validateFields(fields)) {
       setError(false);
-      dispatch(onSubmitAction({ id, ...fields }));
+      dispatch(submitAction({ id, ...fields }));
     } else {
       setError(true);
     }
@@ -148,7 +143,7 @@ CarFieldsForm.defaultProps = {
 
 CarFieldsForm.propTypes = {
   initialFormFields: PropTypes.object.isRequired,
-  onSubmitAction: PropTypes.func.isRequired,
+  submitAction: PropTypes.func.isRequired,
   buttonName: PropTypes.string,
   id: PropTypes.string.isRequired,
 };

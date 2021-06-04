@@ -1,9 +1,6 @@
-import React, { useMemo } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
-
-import { getCars } from "../../store/selectors/cars";
-import { getCart } from "../../store/selectors/cart";
+import { useDispatch } from "react-redux";
 
 import "./cart-list.css";
 import {
@@ -20,34 +17,11 @@ const getTotalValue = (cart) => {
   }, 0);
 };
 
-const getCarsInfo = (cart, cars) => {
-  return cart.reduce((prev, cur) => {
-    const carItem = cars.find((car) => car.id === cur.carId);
-    prev.push({
-      brand: carItem.brand,
-      model: carItem.model,
-      price: carItem.price,
-      carId: cur.carId,
-      amount: cur.amount,
-    });
-    return prev;
-  }, []);
-};
-
-const CartList = () => {
+const CartList = ({ cart }) => {
   const dispatch = useDispatch();
   const onIncrease = (carId) => dispatch(addCarToCart(carId));
   const onDecrease = (carId) => dispatch(removeCarFromCart(carId));
   const onDelete = (carId) => dispatch(removeCarsFromCart(carId));
-
-  const cars = useSelector(getCars);
-  const cart = useSelector(getCart);
-
-  const carsInCart = useMemo(() => getCarsInfo(cart, cars), [cart, cars]);
-
-  if (!carsInCart || !carsInCart.length) {
-    return <h1>Your cart is empty</h1>;
-  }
 
   const total = getTotalValue(cart);
 
@@ -95,7 +69,6 @@ const CartList = () => {
 
 CartList.propTypes = {
   cart: PropTypes.arrayOf(PropTypes.object).isRequired,
-  total: PropTypes.number.isRequired,
 };
 
 export default CartList;

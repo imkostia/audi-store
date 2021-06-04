@@ -33,7 +33,7 @@ const CarListItem = ({ id }) => {
 };
 
 CarListItem.propTypes = {
-  car: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default CarListItem;

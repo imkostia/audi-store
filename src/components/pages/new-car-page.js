@@ -3,6 +3,8 @@ import CarFieldsForm from "../car-fields-form";
 
 import { addNewCar } from "../../store/thunks/cars";
 
+
+
 const NewCarPage = () => {
   const initialFormFields = {
     brand: "",
@@ -19,7 +21,7 @@ const NewCarPage = () => {
       <h2>Creating new car</h2>
       <CarFieldsForm
         initialFormFields={initialFormFields}
-        onSubmitAction={addNewCar}
+        submitAction={addNewCar}
         id={""}
         buttonName="Create new car"
       />

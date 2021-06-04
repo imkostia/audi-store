@@ -37,6 +37,8 @@ export const deleteCar = (id) => (dispatch) => {
 };
 
 export const editCar = (car) => (dispatch) => {
+  dispatch(setLoading(true));
+
   carService
     .editCar(car)
     .then((_) => history.push("/admin"))
@@ -44,6 +46,8 @@ export const editCar = (car) => (dispatch) => {
 };
 
 export const addNewCar = (car) => (dispatch) => {
+  dispatch(setLoading(true));
+
   carService
     .addNewCar(car)
     .then((_) => history.push("/admin"))
