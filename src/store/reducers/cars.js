@@ -21,7 +21,7 @@ const cars = (state = initialState, action) => {
         error: null,
       };
 
-    case "SET_CAR": {
+    case "FETCH_CAR_SUCCESS": {
       return {
         ...state,
         cars: [...state.cars, action.payload],

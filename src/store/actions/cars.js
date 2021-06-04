@@ -11,9 +11,9 @@ export const carsLoaded = (payload) => {
   };
 };
 
-export const setCar = (car) => {
+export const carLoaded = (car) => {
   return {
-    type: "SET_CAR",
+    type: "FETCH_CAR_SUCCESS",
     payload: car,
   };
 };

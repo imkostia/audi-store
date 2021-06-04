@@ -2,7 +2,7 @@ import {
   carsRequested,
   carsLoaded,
   carsFetchError,
-  setCar,
+  carLoaded,
 } from "../actions/cars";
 import { history } from "../../";
 import { getCarById } from "../selectors/cars";
@@ -27,7 +27,7 @@ export const fetchCarById = (id) => (dispatch, getState) => {
 
     carService
       .getCarById(id)
-      .then((car) => dispatch(setCar(car)))
+      .then((car) => dispatch(carLoaded(car)))
       .catch((error) => dispatch(carsFetchError(error)));
   }
 };
