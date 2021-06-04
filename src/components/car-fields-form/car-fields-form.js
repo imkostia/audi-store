@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 
 import "./car-fields-form.css";
 
@@ -137,6 +138,17 @@ const CarFieldsForm = ({ initialFormFields, action, buttonName, id }) => {
       <button>{buttonName}</button>
     </form>
   );
+};
+
+CarFieldsForm.defaultProps = {
+  buttonName: "Submit form",
+};
+
+CarFieldsForm.propTypes = {
+  initialFormFields: PropTypes.object.isRequired,
+  action: PropTypes.func.isRequired,
+  buttonName: PropTypes.string,
+  id: PropTypes.string.isRequired,
 };
 
 export default CarFieldsForm;

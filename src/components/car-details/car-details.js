@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import "./car-details.css";
 
 const CarDetails = ({ car }) => {
@@ -39,6 +41,10 @@ const CarDetails = ({ car }) => {
       </table>
     </React.Fragment>
   );
+};
+
+CarDetails.propTypes = {
+  car: PropTypes.object.isRequired,
 };
 
 export default CarDetails;

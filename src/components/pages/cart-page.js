@@ -3,14 +3,6 @@ import { useSelector } from "react-redux";
 
 import CartList from "../cart-list";
 
-const getTotalValue = (cart) => {
-  return cart.reduce((prev, cur) => {
-    prev += cur.amount * cur.price;
-
-    return prev;
-  }, 0);
-};
-
 const getCarsInfo = (cart, cars) => {
   return cart.reduce((prev, cur) => {
     const carItem = cars.find((car) => car.id === cur.carId);
@@ -27,17 +19,17 @@ const getCarsInfo = (cart, cars) => {
 
 const CartPage = () => {
   const { cartStore, carsStore } = useSelector((store) => store);
+
   const { cars } = carsStore;
   const { cart } = cartStore;
 
-  const carsInfo = useMemo(() => getCarsInfo(cart, cars), [cart, cars]);
-  const total = useMemo(() => getTotalValue(carsInfo), [carsInfo]);
+  const carsInCart = useMemo(() => getCarsInfo(cart, cars), [cart, cars]);
 
-  if (!carsInfo || !carsInfo.length) {
+  if (!carsInCart || !carsInCart.length) {
     return <h1>Your cart is empty</h1>;
   }
 
-  return <CartList cart={carsInfo} total={total} />;
+  return <CartList cart={carsInCart} />;
 };
 
 export default CartPage;

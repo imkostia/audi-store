@@ -1,5 +1,6 @@
 import React from "react";
 import "./error-indicator.css";
+import PropTypes from "prop-types";
 
 const ErrorIndicator = ({ errorMessage }) => {
   return (
@@ -9,6 +10,14 @@ const ErrorIndicator = ({ errorMessage }) => {
       {errorMessage && <div>{errorMessage}</div>}
     </div>
   );
+};
+
+ErrorIndicator.defaultProps = {
+  errorMessage: "",
+};
+
+ErrorIndicator.propTypes = {
+  errorMessage: PropTypes.string,
 };
 
 export default ErrorIndicator;

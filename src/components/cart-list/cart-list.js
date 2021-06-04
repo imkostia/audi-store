@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useMemo } from "react";
+import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 
 import "./cart-list.css";
@@ -8,11 +9,21 @@ import {
   removeCarsFromCart,
 } from "../../store/actions/cart";
 
-const CartList = ({ cart, total }) => {
+const getTotalValue = (cart) => {
+  return cart.reduce((prev, cur) => {
+    prev += cur.amount * cur.price;
+
+    return prev;
+  }, 0);
+};
+
+const CartList = ({ cart }) => {
   const dispatch = useDispatch();
   const onIncrease = (carId) => dispatch(addCarToCart(carId));
   const onDecrease = (carId) => dispatch(removeCarFromCart(carId));
   const onDelete = (carId) => dispatch(removeCarsFromCart(carId));
+
+  const total = useMemo(() => getTotalValue(cart), [cart]);
 
   return (
     <div className="cart-container">
@@ -54,6 +65,11 @@ const CartList = ({ cart, total }) => {
       <p>TOTAL: {total} $</p>
     </div>
   );
+};
+
+CartList.propTypes = {
+  cart: PropTypes.object.isRequired,
+  total: PropTypes.number.isRequired,
 };
 
 export default CartList;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import "./car-list-item.css";
@@ -23,6 +24,11 @@ const CarListItem = ({ car, onAddToCart }) => {
       </div>
     </div>
   );
+};
+
+CarListItem.propTypes = {
+  car: PropTypes.object.isRequired,
+  onAddToCart: PropTypes.func.isRequired,
 };
 
 export default CarListItem;
