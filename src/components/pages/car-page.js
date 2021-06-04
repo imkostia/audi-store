@@ -7,6 +7,7 @@ import { getCarById } from "../../store/selectors/cars";
 import CarDetails from "../car-details";
 import Spinner from "../spinner";
 import ErrorIndicator from "../error-indicator";
+import { getLoading, getError } from "../../store/selectors/cars";
 
 const CarPage = () => {
   const { id } = useParams();
@@ -17,7 +18,8 @@ const CarPage = () => {
   }, [id, dispatch]);
 
   const car = useSelector((store) => getCarById(store, id));
-  const { loading, error } = useSelector(({ carsStore }) => carsStore);
+  const loading = useSelector(getLoading);
+  const error = useSelector(getError);
 
   if (loading) {
     return <Spinner />;

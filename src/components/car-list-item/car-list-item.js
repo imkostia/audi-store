@@ -1,22 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
+import { addCarToCart } from "../../store/actions/cart";
+import { getCarById } from "../../store/selectors/cars";
 import "./car-list-item.css";
 
-const CarListItem = ({ car, onAddToCart }) => {
-  const { brand, model, price, id } = car;
+const CarListItem = ({ id }) => {
+  const dispatch = useDispatch();
+
+  const car = useSelector((store) => getCarById(store, id));
+  const onAddToCart = () => dispatch(addCarToCart(id));
 
   return (
     <div className="car-list-item">
       <div className="car-list-item__title">
-        {brand} {model}
+        {car.brand} {car.model}
       </div>
       <div className="car-list-item__price">
-        <span>From {price} $</span>
+        <span>From {car.price} $</span>
       </div>
       <div className="car-list-item__buttons">
-        <Link to={`/cars/${id}`}>
+        <Link to={`/cars/${car.id}`}>
           <button>Learn more</button>
         </Link>
 
@@ -28,7 +34,6 @@ const CarListItem = ({ car, onAddToCart }) => {
 
 CarListItem.propTypes = {
   car: PropTypes.object.isRequired,
-  onAddToCart: PropTypes.func.isRequired,
 };
 
 export default CarListItem;

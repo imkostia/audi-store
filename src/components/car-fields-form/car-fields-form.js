@@ -3,12 +3,14 @@ import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
 import "./car-fields-form.css";
+import { validateFields } from "../../utils";
 
-const validateFields = (fields) => {
-  return Object.values(fields).every(Boolean);
-};
-
-const CarFieldsForm = ({ initialFormFields, action, buttonName, id }) => {
+const CarFieldsForm = ({
+  initialFormFields,
+  onSubmitAction,
+  buttonName,
+  id,
+}) => {
   const dispatch = useDispatch();
   const [error, setError] = useState(false);
   const [fields, setFields] = useState(initialFormFields);
@@ -23,7 +25,7 @@ const CarFieldsForm = ({ initialFormFields, action, buttonName, id }) => {
 
     if (validateFields(fields)) {
       setError(false);
-      dispatch(action({ id, ...fields }));
+      dispatch(onSubmitAction({ id, ...fields }));
     } else {
       setError(true);
     }
@@ -146,7 +148,7 @@ CarFieldsForm.defaultProps = {
 
 CarFieldsForm.propTypes = {
   initialFormFields: PropTypes.object.isRequired,
-  action: PropTypes.func.isRequired,
+  onSubmitAction: PropTypes.func.isRequired,
   buttonName: PropTypes.string,
   id: PropTypes.string.isRequired,
 };

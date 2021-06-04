@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
 
 import { editCar, fetchCarById } from "../../store/thunks/cars";
-import { getCarById } from "../../store/selectors/cars";
+import { getCarById, getLoading, getError } from "../../store/selectors/cars";
 import CarFieldsForm from "../car-fields-form";
 import Spinner from "../spinner";
 import ErrorIndicator from "../error-indicator";
@@ -17,7 +17,8 @@ const EditCarPage = () => {
   }, [id, dispatch]);
 
   const car = useSelector((store) => getCarById(store, id));
-  const { loading, error } = useSelector(({ carsStore }) => carsStore);
+  const loading = useSelector(getLoading);
+  const error = useSelector(getError);
 
   if (loading) {
     return <Spinner />;
@@ -44,7 +45,7 @@ const EditCarPage = () => {
       </h2>
       <CarFieldsForm
         initialFormFields={initialFormFields}
-        action={editCar}
+        onSubmitAction={editCar}
         id={car.id}
         buttonName="Edit car"
       />

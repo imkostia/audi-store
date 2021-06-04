@@ -1,26 +1,27 @@
-export const carsRequested = () => {
+export const setLoading = (payload) => {
   return {
-    type: "FETCH_CARS_REQUEST",
-  };
-};
-
-export const carsLoaded = (payload) => {
-  return {
-    type: "FETCH_CARS_SUCCESS",
+    type: "SET_LOADING",
     payload,
   };
 };
 
-export const carLoaded = (car) => {
+export const setCars = (payload) => {
   return {
-    type: "FETCH_CAR_SUCCESS",
+    type: "SET_CARS",
+    payload,
+  };
+};
+
+export const setCar = (car) => {
+  return {
+    type: "SET_CAR",
     payload: car,
   };
 };
 
 export const carsFetchError = (error) => {
   return {
-    type: "FETCH_CARS_FETCH_FAILURE",
+    type: "CARS_FETCH_FAILURE",
     payload: error,
   };
 };

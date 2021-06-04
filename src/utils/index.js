@@ -24,4 +24,8 @@ const generateId = () => {
   );
 };
 
-export { compose, generateId };
+const validateFields = (fields) => {
+  return Object.values(fields).every(Boolean);
+};
+
+export { compose, generateId, validateFields };

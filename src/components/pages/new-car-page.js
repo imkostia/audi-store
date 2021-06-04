@@ -19,8 +19,8 @@ const NewCarPage = () => {
       <h2>Creating new car</h2>
       <CarFieldsForm
         initialFormFields={initialFormFields}
-        action={addNewCar}
-        id={null}
+        onSubmitAction={addNewCar}
+        id={""}
         buttonName="Create new car"
       />
     </div>

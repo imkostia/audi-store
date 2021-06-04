@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchCars, deleteCar } from "../../store/thunks/cars";
+import { getCars, getLoading, getError } from "../../store/selectors/cars";
 
 import Spinner from "../spinner";
 import ErrorIndicator from "../error-indicator";
@@ -11,7 +12,9 @@ import ErrorIndicator from "../error-indicator";
 const AdminPage = () => {
   const dispatch = useDispatch();
 
-  const { cars, loading, error } = useSelector(({ carsStore }) => carsStore);
+  const cars = useSelector(getCars);
+  const loading = useSelector(getLoading);
+  const error = useSelector(getError);
 
   useEffect(() => {
     dispatch(fetchCars());

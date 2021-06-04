@@ -6,14 +6,12 @@ const initialState = {
 
 const cars = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_CARS_REQUEST":
+    case "SET_LOADING":
       return {
         ...state,
-        cars: [],
-        loading: true,
-        error: null,
+        loading: action.payload,
       };
-    case "FETCH_CARS_SUCCESS":
+    case "SET_CARS":
       return {
         ...state,
         cars: action.payload,
@@ -21,7 +19,7 @@ const cars = (state = initialState, action) => {
         error: null,
       };
 
-    case "FETCH_CAR_SUCCESS": {
+    case "SET_CAR": {
       return {
         ...state,
         cars: [...state.cars, action.payload],
@@ -30,7 +28,7 @@ const cars = (state = initialState, action) => {
       };
     }
 
-    case "FETCH_CARS_FETCH_FAILURE":
+    case "CARS_FETCH_FAILURE":
       return {
         ...state,
         cars: [],
