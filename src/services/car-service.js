@@ -1,3 +1,5 @@
+import { generateId } from "../utils";
+
 export default class CarService {
   data = [
     {
@@ -36,8 +38,12 @@ export default class CarService {
   ];
 
   getCars() {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve(this.data), 800);
+    return new Promise((resolve, reject) => {
+      setTimeout(
+        () =>
+          this.data ? resolve(this.data) : reject("Cars are not available"),
+        800
+      );
     });
   }
 
@@ -48,10 +54,10 @@ export default class CarService {
     });
   }
 
-  addNewCar(newCar) {
+  addNewCar(newCar = {}) {
     return new Promise((resolve) => {
+      newCar.id = generateId();
       this.data.push(newCar);
-
       setTimeout(() => resolve(this.data), 800);
     });
   }

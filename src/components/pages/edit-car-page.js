@@ -19,11 +19,11 @@ const EditCarPage = () => {
   const car = useSelector((store) => getCarById(store, id));
   const { loading, error } = useSelector(({ carsStore }) => carsStore);
 
-  if (!car && loading) {
+  if (loading) {
     return <Spinner />;
   }
 
-  if (!car && !loading && error) {
+  if (error) {
     return <ErrorIndicator errorMessage={error} />;
   }
 

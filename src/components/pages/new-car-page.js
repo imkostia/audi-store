@@ -2,11 +2,8 @@ import React from "react";
 import CarFieldsForm from "../car-fields-form";
 
 import { addNewCar } from "../../store/thunks/cars";
-import { generateId } from "../../utils";
 
 const NewCarPage = () => {
-  const id = generateId();
-
   const initialFormFields = {
     brand: "",
     model: "",
@@ -23,7 +20,7 @@ const NewCarPage = () => {
       <CarFieldsForm
         initialFormFields={initialFormFields}
         action={addNewCar}
-        id={id}
+        id={null}
         buttonName="Create new car"
       />
     </div>

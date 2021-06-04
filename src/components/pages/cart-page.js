@@ -26,8 +26,9 @@ const getCarsInfo = (cart, cars) => {
 };
 
 const CartPage = () => {
-  const { cart } = useSelector(({ cartStore }) => cartStore);
-  const { cars } = useSelector(({ carsStore }) => carsStore);
+  const { cartStore, carsStore } = useSelector((store) => store);
+  const { cars } = carsStore;
+  const { cart } = cartStore;
 
   const carsInfo = useMemo(() => getCarsInfo(cart, cars), [cart, cars]);
   const total = useMemo(() => getTotalValue(carsInfo), [carsInfo]);
